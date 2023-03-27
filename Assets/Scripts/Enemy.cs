@@ -6,11 +6,11 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] GameObject deathVFX;
     [SerializeField] Transform parent;
-    [SerializeField] int scorePerHit = 15f;
+    [SerializeField] int scorePerHit = 15;
     ScoreBoard scoreBoard;
 
     void Start() {
-        scoreBoard = FindObjectOrType<ScoreBoard>();
+        scoreBoard = FindObjectOfType<ScoreBoard>();
     }
     void OnParticleCollision(GameObject other)
     {
