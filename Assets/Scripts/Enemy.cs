@@ -9,6 +9,9 @@ public class Enemy : MonoBehaviour
     
     [SerializeField] int scorePerHit = 15;
     [SerializeField] int killHit = 2;
+    // [SerializeField] AudioClip musicEnemy ;
+
+    // AudioSource audioSource ;
     ScoreBoard scoreBoard;
     GameObject parentGameObject;
     Rigidbody rb;
@@ -17,7 +20,8 @@ public class Enemy : MonoBehaviour
     {
         AddRigidbody();
         scoreBoard = FindObjectOfType<ScoreBoard>();
-        parentGameObject = GameObject.FindWithTag("SpawnAtRunTime");
+        parentGameObject = GameObject.FindWithTag("SpawnAtRuntime");
+        // audioSource = GetComponent<AudioSource>();
     }
 
     private void AddRigidbody()
@@ -28,6 +32,8 @@ public class Enemy : MonoBehaviour
 
     void OnParticleCollision(GameObject other)
     {
+        // audioSource.Stop();
+        // audioSource.Play(musicEnemy);
         ProcessHit();
         if(killHit<1)
         {
@@ -39,7 +45,7 @@ public class Enemy : MonoBehaviour
     {
         GameObject vfx = Instantiate(deathVFX, transform.position, Quaternion.identity);
         vfx.transform.parent = parentGameObject.transform;
-        Destroy(gameObject);
+        Destroy(gameObject);       
     }
 
     private void ProcessHit()
